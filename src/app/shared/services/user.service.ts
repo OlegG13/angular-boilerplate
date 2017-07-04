@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
-  // Hides the identity of an observable sequence. Methot next from currentUser
+  // Hides the identity of an observable sequence. Method next from currentUser
   // not working
   private currentUserSubject = new BehaviorSubject<User>(new User());
   public currentUser = this.currentUserSubject.asObservable().distinctUntilChanged();
@@ -60,6 +60,12 @@ export class UserService {
     this.isAuthenticatedSubject.next(false);
   }
 
+  /**
+   * attempt auth
+   * @param type
+   * @param credentials
+   * @returns {any}
+   */
   attemptAuth(type, credentials): Observable<User> {
     const route = (type === 'login') ? '/login' : '';
     return this.apiService.post('/users' + route, {user: credentials})

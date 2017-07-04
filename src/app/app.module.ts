@@ -1,15 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import {AccordionModule} from 'primeng/primeng';
-
+import {BrowserModule} from '@angular/platform-browser';
+import {ModuleWithProviders, NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
 import {
   ApiService,
   JwtService,
+  UserService,
   FooterComponent,
   HeaderComponent,
   SharedModule
 } from './shared';
+import {RouterModule} from '@angular/router';
+import {AuthModule} from './auth/auth.module';
+
+const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: true });
 
 @NgModule({
   declarations: [
@@ -18,14 +21,17 @@ import {
     FooterComponent
   ],
   imports: [
+    rootRouting,
     BrowserModule,
     SharedModule,
-    AccordionModule
+    AuthModule
   ],
   providers: [
     ApiService,
-    JwtService
+    JwtService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
