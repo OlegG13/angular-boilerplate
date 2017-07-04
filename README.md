@@ -1,15 +1,18 @@
-# Diprella
+# Angular BOILERPLATE
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+## DOCS
+Run `npm run docs` to generate docs
+Run `npm run serve-docs` start server docs
 
 ## Development server
 
-Run `npm run start` or `yarn start` for a dev server (use proxy). Navigate to 
-`http://localhost:4200/`. The 
+Run `npm run start` or `yarn start` for a dev server (use proxy). Navigate to
+`http://localhost:4200/`. The
 app will automatically reload if you change any of the source files.
 
 ## Proxy settings
-Configure file `proxy.conf.json` target - your api url 
+Configure file `proxy.conf.json` target - your api url
 
 ## Code scaffolding
 
