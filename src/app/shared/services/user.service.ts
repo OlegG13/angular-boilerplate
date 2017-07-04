@@ -42,6 +42,10 @@ export class UserService {
     }
   }
 
+  /**
+   * set Auth to true, set current User save token to localStorage
+   * @param user
+   */
   setAuth(user: User) {
     // Save JWT sent from server in localstorage
     this.jwtService.saveToken(user.token);
@@ -51,6 +55,9 @@ export class UserService {
     this.isAuthenticatedSubject.next(true);
   }
 
+  /**
+   * clean auth data, clean token
+   */
   purgeAuth() {
     // Remove JWT from localstorage
     this.jwtService.destroyToken();
@@ -61,7 +68,7 @@ export class UserService {
   }
 
   /**
-   * attempt auth
+   * attempt auth (sign-in|sign-up)
    * @param type
    * @param credentials
    * @returns {any}
@@ -77,11 +84,19 @@ export class UserService {
       );
   }
 
+  /**
+   * return current user data
+   * @returns {User}
+   */
   getCurrentUser(): User {
     return this.currentUserSubject.value;
   }
 
-  // Update the user on the server (email, pass, etc)
+  /**
+   * Update the user on the server
+   * @param user (email, pass, etc)
+   * @returns {Observable<R>}
+   */
   update(user): Observable<User> {
     return this.apiService
       .put('/user', { user })
